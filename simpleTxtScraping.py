@@ -1,9 +1,11 @@
 # web for scarping - https://automated.pythonanywhere.com/tours/
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+#to bypass certicate error I used this command -> xattr -d com.apple.quarantine chromedriver
 service = Service('/Users/rock/Documents/scripts/python/udemy/webscraping/chromedriver_mac64/chromedriver')
-# Configure the browser instance
+
 def get_driver():
+    # Configure the browser instance
     options = webdriver.ChromeOptions()
     #This method,add_argument allows you to add a command-line argument to the browser instance
     options.add_argument("disable-infobars")
@@ -21,8 +23,9 @@ def get_driver():
     return driver
 
 def basicScraping():
+    #navigate to a webpage
     driver=get_driver()
-    element = driver.find_element_by_xpath("/html/body/div[1]/div/h1[1]")
-    return element
+    element = driver.find_element(by="xpath", value="/html/body/div[1]/div/h1[1]")
+    return element.text
 
 print(basicScraping())
