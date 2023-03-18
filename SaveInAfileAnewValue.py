@@ -35,7 +35,8 @@ def get_driver():
 
 def noTxt(full_scrape):
     numbers=float(full_scrape.split(": ")[1])
-    curTime=strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    #get current time
+    curTime=strftime("%Y-%m-%d_%H:%M:%S", gmtime())
     file = open("temprature_"+curTime, "w")
     file.write(str(numbers))
     file.close()
