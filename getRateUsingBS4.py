@@ -5,7 +5,6 @@ def get_currency_rate(in_cur, out_cur):
     url = f"https://www.x-rates.com/calculator/?from={in_cur}&to={out_cur}&amount=1"
     # if you enter "EUR","AUD" the result would be https://www.x-rates.com/calculator/?from=EUR&to=AUD&amount=1
     get_content=requests.get(url).text # getting SOURCE CODE 
-
     # At this stage we start using bs4 lib
     soup = BeautifulSoup(get_content,"html.parser")
     # finding class for our rate in HTML format
